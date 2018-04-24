@@ -1,0 +1,20 @@
+add_subdirectory(opende)
+
+if (NOT CCD_FOUND)
+  add_subdirectory(libccd)
+endif()
+# add_subdirectory(ann)
+# add_subdirectory(fcl)
+
+  FIND_PACKAGE(MPI)
+  if(MPI_CXX_FOUND)
+    message("*_*::mpi found")
+    set(CMAKE_C_COMPILER "/usr/bin/mpicxx")
+    set(CMAKE_CXX_COMPILER "/usr/bin/mpicxx")
+    set(CMAKE_C_COMPILER "mpicxx")
+    set(CMAKE_CXX_COMPILER "mpicxx")
+    include_directories(/opt/intel/impi/2018.1.148/include64)
+    include_directories(/usr/include/mpi)
+    #set(CMAKE_CXX_FLAGS "/usr/include/mpi")
+  endif()
+
